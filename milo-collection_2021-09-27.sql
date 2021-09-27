@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.35)
 # Database: milo-collection
-# Generation Time: 2021-09-27 12:31:50 +0000
+# Generation Time: 2021-09-27 13:19:10 +0000
 # ************************************************************
 
 
@@ -27,26 +27,26 @@ DROP TABLE IF EXISTS `idols`;
 
 CREATE TABLE `idols` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
   `age` int(2) unsigned NOT NULL,
-  `instrument` varchar(20) NOT NULL DEFAULT '',
-  `band` varchar(20) NOT NULL DEFAULT '',
-  `technical prowess` int(2) unsigned NOT NULL,
-  `image` varchar(30) DEFAULT NULL,
+  `instrument` varchar(255) NOT NULL DEFAULT '',
+  `band` varchar(255) NOT NULL DEFAULT '',
+  `technical-prowess` enum('1','2','3','4','5','6','7','8','9','10') NOT NULL DEFAULT '1',
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `idols` WRITE;
 /*!40000 ALTER TABLE `idols` DISABLE KEYS */;
 
-INSERT INTO `idols` (`id`, `name`, `age`, `instrument`, `band`, `technical prowess`, `image`)
+INSERT INTO `idols` (`id`, `name`, `age`, `instrument`, `band`, `technical-prowess`, `image`)
 VALUES
-	(1,'Mario Duplantier',40,'Drums','Gojira',10,'marioduplantier.jpg'),
-	(2,'Troy Sanders',48,'Bass + Vocals','Mastodon',7,'troysanders.jpg'),
-	(3,'Javier Reyes',40,'8-String Guitar','Animals As Leaders',10,'javierreyes.jpg'),
-	(4,'Mike Scheidt',51,'Guitar + Vocals','YOB',8,'mikescheidt.jpg'),
-	(5,'Matt Ryan',32,'Vocals','Desert Storm',7,'mattryan.jpg'),
-	(6,'Devin Townsend',49,'Guitar + Vocals','Devin Townsend',9,'devintownsend.jpg');
+	(1,'Mario Duplantier',40,'Drums','Gojira','10','marioduplantier.jpg'),
+	(2,'Troy Sanders',48,'Bass + Vocals','Mastodon','7','troysanders.jpg'),
+	(3,'Javier Reyes',40,'8-String Guitar','Animals As Leaders','10','javierreyes.jpg'),
+	(4,'Mike Scheidt',51,'Guitar + Vocals','YOB','8','mikescheidt.jpg'),
+	(5,'Matt Ryan',32,'Vocals','Desert Storm','7','mattryan.jpg'),
+	(6,'Devin Townsend',49,'Guitar + Vocals','Devin Townsend','9','devintownsend.jpg');
 
 /*!40000 ALTER TABLE `idols` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -21,6 +21,26 @@ img {
     width: 200px;
 }
 
+input {
+    width: 210px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    width: 70px;
+}
+
+
+
+
+
 
 
 

@@ -14,15 +14,16 @@ if(isset($_POST['name'])) {
     <link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
 
-<body>
+<body class="form">
     <form method="post" action="index.php">
         <input type="text" name="name" placeholder="Name of Idol" required />
-        <input type="text" name="age" placeholder="Age of Idol" required />
+        <input type="number" name="age" placeholder="Age of Idol" min="10" max="99" required />
         <input type="text" name="band" placeholder="Idol's Most Notable Band" required />
         <input type="text" name="instrument" placeholder="Idol's Instrument(s)" required />
-        <input type="text" name="technical-prowess" placeholder="Technical Prowess out of 10" required />
+        <input type="number" name="technical-prowess"
+               placeholder="Technical Prowess out of 10" min="1" max="10" required />
         <input type="text" name="image" placeholder="Image File Name" />
-        <input type="submit" value="Submit" />
+        <input class="submit" type="submit" value="Submit" />
     </form>
 </body>
 

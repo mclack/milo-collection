@@ -1,5 +1,6 @@
 <?php
 
+require_once 'functions.php';
 
 // Create PDO connection (inc set fetch mode)
 $db = new PDO ('mysql:host=db; dbname=milo-collection', 'root', 'password');
@@ -10,11 +11,6 @@ $query = $db->prepare("SELECT `name`, `age`, `instrument`, `band`, `technical-pr
 $query->execute();
 $idols = $query->fetchAll();
 
-// Loop over results to echo out stats for each item
-    foreach($idols as $idol) {
-        echo $idol['name'] . ' ' . $idol['age'] . ' ' . $idol['instrument'] . ' ' . $idol['band']
-        . ' ' . $idol['technical-prowess'] . ' ' . $idol['image'] . '<br>';
-    }
 ?>
 
 <!DOCTYPE html>
@@ -26,5 +22,9 @@ $idols = $query->fetchAll();
     <link rel="stylesheet" href="normalize.css" type="text/css" />
     <link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
+
+<body>
+<?= displayItems($idols) ?>
+</body>
 
 </html>

@@ -11,14 +11,10 @@ $query->execute();
 $idols = $query->fetchAll();
 
 // Loop over results to echo out stats for each item
-function displayItems($idols) {
     foreach($idols as $idol) {
         echo $idol['name'] . ' ' . $idol['age'] . ' ' . $idol['instrument'] . ' ' . $idol['band']
         . ' ' . $idol['technical-prowess'] . ' ' . $idol['image'] . '<br>';
     }
-}
-
-displayItems($idols);
 ?>
 
 <!DOCTYPE html>

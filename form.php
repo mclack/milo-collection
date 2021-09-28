@@ -1,4 +1,7 @@
 <?php
+if(isset($_POST['name'])) {
+    header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,5 +25,9 @@
         <input type="submit" value="Submit" />
     </form>
 </body>
+
+<footer>
+    <a href="http://localhost:1234/weekFive/milo-collection/index.php">Return to Main Page</a>
+</footer>
 
 </html>

@@ -3,8 +3,6 @@
 
 require 'functions.php';
 
-
-
 use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase
@@ -29,22 +27,16 @@ class Test extends TestCase
 
     public function testFailureDisplayItems()
     {
-        $expected = 0;
-        $input = [['name' => 'Billy',
-            'age' => 93,
-            'instrument' => 'Banjo',
-            'band' => 'Billy\'s Bazookas',
-            'technical-prowess' => 1000000,
-            'image' => 'billy.jpg']];
+        $expected = 'Input error. Array doesn\'t exist';
+        $input = [];
         $case = displayItems($input);
         $this->assertEquals($expected, $case);
     }
 
     public function testMalformedDisplayItems()
     {
-        $expected = 'hello';
-        $case = displayItems('hello');
-        $this->assertEquals($expected, $case);
+        $this->expectException(TypeError::class);
+        displayItems(1);
     }
 }
 

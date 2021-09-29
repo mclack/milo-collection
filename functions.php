@@ -1,16 +1,20 @@
 <?php
 
-
+// Creates connection to collection database
+// and sets fetch mode so that it will return an associative array
 function getDb() {
     $db = new PDO ('mysql:host=db; dbname=milo-collection', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    // Returns the contents of the database as an object
     return $db;
 }
 
+// Takes the database object and runs an SQL query against it
 function getIdols($db) {
     $query = $db->prepare("SELECT `name`, `age`, `instrument`, `band`, `technical-prowess`, `image` FROM `idols`;");
     $query->execute();
     $idols = $query->fetchAll();
+//  Returns an associative array which contains nested arrays of each idol and their stats
     return $idols;
 }
 

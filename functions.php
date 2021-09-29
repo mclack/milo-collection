@@ -4,7 +4,7 @@
  * Creates connection to collection database
  * @return PDO The Db connection
  */
-function getDb() {
+function getDb() : PDO {
     $db = new PDO ('mysql:host=db; dbname=milo-collection', 'root', 'password');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
@@ -46,6 +46,19 @@ function displayItems(array $idols) : string {
                 '<p>' . 'Technical Prowess: ' . $idol['technical-prowess'] . '</p>' . '</div>';
         }
         return $result;
+}
+
+/**
+ * Cleanses user input by converting special characters using htmlspecialchars()
+ * @param array $postItems the $_POST superglobal that has been populated by user input
+ * @return array the new array populated by cleansed user input
+ */
+function cleanseData(array $postItems) : array {
+    $cleansedArr = [];
+    foreach($postItems as $postItem) {
+       $cleansedArr[] = filter_var($postItem, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+    return $cleansedArr;
 }
 
 ?>

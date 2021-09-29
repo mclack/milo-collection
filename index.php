@@ -10,6 +10,18 @@ $idols = getIdols($db);
 
 $items = displayItems($idols);
 
+// Cleansing user input from form and storing cleansed data in $cleansedArr
+if(isset($_POST['name'])) {
+    $cleansedArr = (cleanseData($_POST));
+// Creating semantic variables to match corresponding index in $cleansedArr - makes accessing data easier
+    $name = 0;
+    $age = 1;
+    $instrument = 2;
+    $band = 3;
+    $prowess = 4;
+    $image = 5;
+}
+
 ?>
 
 <!DOCTYPE html>

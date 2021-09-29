@@ -17,23 +17,23 @@ if(isset($_POST['name'])) {
 <body class="form">
     <form method="post" action="index.php" id="injection">
         <label form="injection" for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Name of Idol" required />
+        <input type="text" id="name" name="name" maxlength="255" placeholder="Name of Idol" required />
         <br>
         <label form="injection" for="age">Age</label>
         <input type="number" id="age" name="age" placeholder="Age of Idol" min="10" max="99" required />
         <br>
         <label form="injection" for="band">Band</label>
-        <input type="text" id="band" name="band" placeholder="Idol's Most Notable Band" required />
+        <input type="text" id="band" name="band" maxlength="255" placeholder="Idol's Most Notable Band" required />
         <br>
         <label form="injection" for="instrument">Instrument</label>
-        <input type="text" id="instrument" name="instrument" placeholder="Idol's Instrument(s)" required />
+        <input type="text" id="instrument" name="instrument" maxlength="255" placeholder="Idol's Instrument(s)" required />
         <br>
         <label form="injection" for="technical-prowess">Technical Prowess</label>
         <input type="number" id="technical-prowess" name="technical-prowess"
                placeholder="Technical Prowess out of 10" min="1" max="10" required />
         <br>
         <label form="injection" for="image">Image</label>
-        <input type="text" id="image" name="image" placeholder="Image File Name" />
+        <input type="text" id="image" name="image" maxlength="255" placeholder="Image File Name" />
         <br>
         <input class="submit" type="submit" value="Submit" />
         <br>

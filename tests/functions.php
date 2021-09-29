@@ -1,11 +1,11 @@
 <?php
 
 
-require 'functions.php';
+require_once '../functions.php';
 
 use PHPUnit\Framework\TestCase;
 
-class Test extends TestCase
+class Functions extends TestCase
 {
     public function testSuccessDisplayItems()
     {

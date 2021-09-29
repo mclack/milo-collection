@@ -3,13 +3,12 @@
 require_once 'functions.php';
 
 // Create PDO connection (inc set fetch mode)
-$db = new PDO ('mysql:host=db; dbname=milo-collection', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$db = getDb();
 
-// Write SQL query to retrieve all collection items
-$query = $db->prepare("SELECT `name`, `age`, `instrument`, `band`, `technical-prowess`, `image` FROM `idols`;");
-$query->execute();
-$idols = $query->fetchAll();
+//and write SQL query to retrieve all collection items
+$idols = getIdols($db);
+
+$items = displayItems($idols);
 
 ?>
 
@@ -24,7 +23,7 @@ $idols = $query->fetchAll();
 </head>
 
 <body>
-<?= displayItems($idols) ?>
+<?= $items ?>
 </body>
 
 <footer>

@@ -1,9 +1,41 @@
 <?php
 
+/**
+ * Creates connection to collection database
+ * @return PDO The Db connection
+ */
+function getDb() {
+    $db = new PDO ('mysql:host=db; dbname=milo-collection', 'root', 'password');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $db;
+}
+
+/**
+ * Takes the PDO and runs an SQL query against it
+ *
+ * @param PDO $db the database connection
+ *
+ * @return array The results from our db query
+ */
+function getIdols(PDO $db) : array {
+    $query = $db->prepare("SELECT `name`, `age`, `instrument`, `band`, `technical-prowess`, `image` FROM `idols`;");
+    $query->execute();
+    $idols = $query->fetchAll();
+    return $idols;
+}
+
+
+/**
+ * Takes $idols array (created by getIdols()) and loops over the items,
+    adding appropriate HTML tags to allow for convenient display on index.php
+ * @param array $idols the associative array of idols
+ * @return string returns each idol in a separate <div> with each stat being separated by <p>s
+    apart from the idol image which is stored in an <img> tag
+ */
 function displayItems(array $idols) : string {
-    if($idols === []) {
+    if(!count($idols)) {
         return 'Input error. Array doesn\'t exist';
-    } else {
+    }
         $result = '';
         foreach ($idols as $idol) {
             $result .= '<div>' . '<img src="images/' . $idol['image'] . '" />' .
@@ -14,7 +46,6 @@ function displayItems(array $idols) : string {
                 '<p>' . 'Technical Prowess: ' . $idol['technical-prowess'] . '</p>' . '</div>';
         }
         return $result;
-    }
 }
 
 ?>

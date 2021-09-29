@@ -41,7 +41,7 @@ if(isset($_POST['name'])) {
 </body>
 
 <footer>
-    <a href="http://localhost:1234/weekFive/milo-collection/index.php">Return to Main Page</a>
+    <a href="index.php">Return to Main Page</a>
 </footer>
 
 </html>

@@ -27,7 +27,7 @@ $items = displayItems($idols);
 </body>
 
 <footer>
-    <a href="http://localhost:1234/weekFive/milo-collection/form.php">Add to Database</a>
+    <a href="form.php">Add to Database</a>
 </footer>
 
 </html>

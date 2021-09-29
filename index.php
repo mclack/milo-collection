@@ -34,6 +34,10 @@ if(isset($_POST['name'])) {
     <link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
 
+<header>
+    <h1 class="h1">Milo's Idols</h1>
+</header>
+
 <body>
 <?= $items ?>
 </body>

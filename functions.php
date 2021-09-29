@@ -49,7 +49,7 @@ function displayItems(array $idols) : string {
 }
 
 /**
- * Cleanses user input by converting special characters using htmlspecialchars()
+ * Cleanses user input by converting special characters using filter_var()
  * @param array $postItems the $_POST superglobal that has been populated by user input
  * @return array the new array populated by cleansed user input
  */

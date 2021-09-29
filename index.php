@@ -1,20 +1,15 @@
 <?php
 
+require_once 'functions.php';
 
 // Create PDO connection (inc set fetch mode)
-$db = new PDO ('mysql:host=db; dbname=milo-collection', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$db = getDb();
 
-// Write SQL query to retrieve all collection items
-$query = $db->prepare("SELECT `name`, `age`, `instrument`, `band`, `technical-prowess`, `image` FROM `idols`;");
-$query->execute();
-$idols = $query->fetchAll();
+//and write SQL query to retrieve all collection items
+$idols = getIdols($db);
 
-// Loop over results to echo out stats for each item
-    foreach($idols as $idol) {
-        echo $idol['name'] . ' ' . $idol['age'] . ' ' . $idol['instrument'] . ' ' . $idol['band']
-        . ' ' . $idol['technical-prowess'] . ' ' . $idol['image'] . '<br>';
-    }
+$items = displayItems($idols);
+
 ?>
 
 <!DOCTYPE html>
@@ -26,5 +21,13 @@ $idols = $query->fetchAll();
     <link rel="stylesheet" href="normalize.css" type="text/css" />
     <link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
+
+<body>
+<?= $items ?>
+</body>
+
+<footer>
+    <a href="form.php">Add to Database</a>
+</footer>
 
 </html>

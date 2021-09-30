@@ -5,7 +5,7 @@ require_once 'functions.php';
 // Create PDO connection (inc set fetch mode)
 $db = getDb();
 
-//and write SQL query to retrieve all collection items
+// SQL query to retrieve all collection items
 $idols = getIdols($db);
 
 $items = displayItems($idols);
@@ -22,8 +22,16 @@ $items = displayItems($idols);
     <link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
 
+<header>
+    <h1 class="h1">Milo's Idols</h1>
+</header>
+
 <body>
-<?= $items ?>
+    <?= $items ?>
 </body>
+
+<footer class="footer">
+    <a href="form.php">Add to Database</a>
+</footer>
 
 </html>

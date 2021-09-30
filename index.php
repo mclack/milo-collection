@@ -27,10 +27,10 @@ $items = displayItems($idols);
 </header>
 
 <body>
-<?= $items ?>
+    <?= $items ?>
 </body>
 
-<footer>
+<footer class="footer">
     <a href="form.php">Add to Database</a>
 </footer>
 

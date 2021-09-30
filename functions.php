@@ -34,7 +34,7 @@ function getIdols(PDO $db) : array {
  */
 function displayItems(array $idols) : string {
     if(!count($idols)) {
-        return 'Input error. Array doesn\'t exist';
+        return 'Input error. Array doesn\'t exist.';
     }
         $result = '';
         foreach ($idols as $idol) {
@@ -53,7 +53,10 @@ function displayItems(array $idols) : string {
  * @param array $postItems the $_POST superglobal that has been populated by user input
  * @return array the new array populated by cleansed user input
  */
-function cleanseData(array $postItems) : array {
+function cleanseData(array $postItems) {
+    if (!count($postItems)) {
+        return 'Input error. Array doesn\'t exist.';
+    }
     $cleansedArr = [];
     foreach($postItems as $postItem) {
        $cleansedArr[] = filter_var($postItem, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -61,13 +64,28 @@ function cleanseData(array $postItems) : array {
     return $cleansedArr;
 }
 
-function checkDuplicate(PDO $db, string $name) {
+/**
+ * Checks the names in the database to see whether the user input for 'name' is a duplicate
+ * @param PDO $db the database
+ * @param string $name this should be $cleansedArr[0]
+ * $cleansedArr[0] corresponds with the cleansed version of the user input for the 'name' field
+ * @return bool will be 0/false if it's a new entry and 1/true if it matches a previous entry
+ */
+function checkDuplicate(PDO $db, string $name) : bool {
     $query = $db->prepare("SELECT `name` FROM `idols` WHERE `name` = :name;");
     $query->bindParam(':name', $name);
     $query->execute();
-    return $query->fetch();
+    $return = $query->fetch();
+    if (gettype($return) == 'array') {
+        $return = 1;
+    } return $return;
 }
 
+/**
+ * Inserts user inputs into the database which will automatically update on index.php
+ * @param PDO $db the database
+ * @param array $cleansedArr the array of cleansed user inputs created by cleanseData()
+ */
 function dbInsertion(PDO $db, array $cleansedArr) {
     $query = $db->prepare("INSERT INTO `idols` (`name`, `age`, `instrument`, `band`, `technical-prowess`, `image`)
     VALUES (:name, :age, :instrument, :band, :prowess, :image);");

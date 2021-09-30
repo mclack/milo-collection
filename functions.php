@@ -61,4 +61,20 @@ function cleanseData(array $postItems) : array {
     return $cleansedArr;
 }
 
+function checkDuplicate(PDO $db, string $name) {
+    $query = $db->prepare("SELECT `name` FROM `idols` WHERE `name` = :name;");
+    $query->bindParam(':name', $name);
+    $query->execute();
+    return $query->fetch();
+}
+
+function dbInsertion(PDO $db, array $cleansedArr) {
+    $query = $db->prepare("INSERT INTO `idols` (`name`, `age`, `instrument`, `band`, `technical-prowess`, `image`)
+    VALUES (:name, :age, :instrument, :band, :prowess, :image);");
+    $query->execute(['name' => $cleansedArr[0], 'age' => $cleansedArr[1], 'instrument' => $cleansedArr[2],
+    'band' => $cleansedArr[3], 'prowess' => $cleansedArr[4], 'image' => $cleansedArr[5]]);
+    }
+
+
+
 ?>

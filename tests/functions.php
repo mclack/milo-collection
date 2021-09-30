@@ -24,20 +24,38 @@ class Functions extends TestCase
         $this->assertEquals($expected, $case);
         $this->assertIsString($case, 'error - result is not string');
     }
-
     public function testFailureDisplayItems()
     {
-        $expected = 'Input error. Array doesn\'t exist';
+        $expected = 'Input error. Array doesn\'t exist.';
         $input = [];
         $case = displayItems($input);
         $this->assertEquals($expected, $case);
     }
-
     public function testMalformedDisplayItems()
     {
         $this->expectException(TypeError::class);
         displayItems(1);
     }
+
+    public function testSuccessCleanseData()
+    {
+        $expected = [0 => 'Milo', 1 => '23', 2 => 'Guitar', 3 => '&#62;', 4 => '6'];
+        $input = ['name' => 'Milo',
+            'age' => '23',
+            'instrument' => 'Guitar',
+            'band' => '>',
+            'technical-prowess' => '6'];
+        $case = cleanseData($input);
+        $this->assertEquals($expected, $case);
+    }
+    public function testFailureCleanseData()
+    {
+        $expected = 'Input error. Array doesn\'t exist.';
+        $input = [];
+        $case = cleanseData($input);
+        $this->assertEquals($expected, $case);
+    }
+
 }
 
 

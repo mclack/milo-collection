@@ -10,7 +10,7 @@ class Functions extends TestCase
     public function testSuccessDisplayItems()
     {
 //expect the result of the test
-        $expected = '<div><img src="images/billy.jpg" /><p>Name: Billy</p><p>Age: 93</p><p>Instrument(s): Banjo</p><p>Most Notable Band: Billy\'s Bazookas</p><p>Technical Prowess: 1000000</p></div>';
+        $expected = '<div class="dbItems"><img src="images/billy.jpg" /><p>Name: Billy</p><p>Age: 93</p><p>Instrument(s): Banjo</p><p>Most Notable Band: Billy\'s Bazookas</p><p>Technical Prowess: 1000000</p></div>';
 //define the input for the test to get the expected result
         $input = [['name' => 'Billy',
             'age' => 93,
@@ -54,6 +54,11 @@ class Functions extends TestCase
         $input = [];
         $case = cleanseData($input);
         $this->assertEquals($expected, $case);
+    }
+    public function testMalformedCleanseData()
+    {
+        $this->expectException(TypeError::class);
+        cleanseData(1);
     }
 
 }

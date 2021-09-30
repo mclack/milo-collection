@@ -16,17 +16,22 @@ body {
     justify-content: space-around;
     background: lightgray;
 }
-
+footer {
+    display: flex;
+    /*align-items: flex-end;*/
+    justify-content: center;
+}
 /*index.php*/
 
 .dbItems {
-    width: 30%;
+    width: 400px;
     margin: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 3px solid black;
     background: darkred;
+    text-align: center;
 }
 img {
     height: 200px;
@@ -66,14 +71,10 @@ form {
     align-items: center;
 }
 
-a {
-
-}
-
 
 @media screen and (max-width: 895px) {
    div {
-        width: 100%;
+        width: 300px;
        display: flex;
        flex-direction: column;
        align-items: center;

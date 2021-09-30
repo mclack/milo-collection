@@ -1,52 +1,74 @@
+/*Generic styling*/
+
 * {
     box-sizing: border-box;
 }
-
 header {
-    width: 2000px;
-    height: 2000px;
+    width: 100%;
 }
-
-/*Currently not doing anything..............*/
-h1 {
+h1, h2, h3 {
+    text-align: center;
     font-family: Papyrus;
 }
-
 body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background: lightgray;
 }
 
-div {
+/*index.php*/
+
+.dbItems {
     width: 30%;
     margin: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 3px solid black;
+    background: darkred;
 }
-
 img {
     height: 200px;
     width: 200px;
 }
+p {
+    font-family: Copperplate;
+}
+/*form.php*/
 
+.formHeader {
+    margin-bottom: 50px;
+}
 input {
     width: 210px;
     height: 30px;
     display: flex;
     flex-direction: column;
 }
-
 .form {
     display: flex;
     flex-direction: column;
 }
+form {
+    margin: 10px;
+}
+.inputs {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
 
 .submit {
     width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+a {
+
+}
 
 
 @media screen and (max-width: 895px) {

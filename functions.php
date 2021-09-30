@@ -38,7 +38,7 @@ function displayItems(array $idols) : string {
     }
         $result = '';
         foreach ($idols as $idol) {
-            $result .= '<div>' . '<img src="images/' . $idol['image'] . '" />' .
+            $result .= '<div class="dbItems">' . '<img src="images/' . $idol['image'] . '" />' .
                 '<p>' . 'Name: ' . $idol['name'] . '</p>' .
                 '<p>' . 'Age: ' . $idol['age'] . '</p>' .
                 '<p>' . 'Instrument(s): ' . $idol['instrument'] . '</p>' .
